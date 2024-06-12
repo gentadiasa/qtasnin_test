@@ -1,0 +1,142 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Sales API",
+      "version": "1.0.0",
+      "description": "API example test Qtasnim - Genta"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:3000",
+        "description": "Local server"
+      }
+    ],
+    "paths": {
+      "/items": {
+        "get": {
+          "summary": "Get All item",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Item"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Post new item",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Item"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success create new item",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Item"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/transactions": {
+        "get": {
+          "summary": "Get All Transaction",
+          "responses": {
+            "200": {
+              "description": "",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Transaction"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create new Transaction",
+          "requestBody": {
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                }
+              }
+            }
+          },
+          "responses": {
+            "201": {
+              "description": "Success create new transaction",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "$ref": "#/components/schemas/Transaction"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Item": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "example": "Kopi"
+            },
+            "type": {
+              "type": "string",
+              "example": "Konsumsi"
+            }
+          }
+        },
+        "Transaction": {
+          "type": "object",
+          "properties": {
+            "stock": {
+              "type": "integer",
+              "example": 100
+            },
+            "quantitySold": {
+              "type": "integer",
+              "example": 10
+            },
+            "transactionDate": {
+              "type": "string",
+              "format": "date",
+              "example": "2021-05-01"
+            }
+          }
+        }
+      }
+    }
+  }
+  
